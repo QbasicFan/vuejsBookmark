@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
+
+
+<link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <body>
+
+
+<section class="message-list">
+  <section class="message -right">
+    <!-- Balloon -->
+    <div class="nes-balloon from-right">
+      <p>Hello visitor, this is my bookmark app.</p>
+    </div>
+    <i class="nes-bcrikko"></i>
+  </section>
+</section>
+
+
+
 
 <div id="todo-list-example">
   <form v-on:submit.prevent="addNewTodo">
@@ -25,7 +42,10 @@
 
     <button>Add</button>
   </form>
-  <ul>
+
+
+<div class="lists">
+<ul class="nes-list is-disc">
   <div class="row" style="background-color:black;color:white">
 	<div class="col-sm-2">Click</div>
 	<div class="col-sm-2">Rank</div>
@@ -56,13 +76,16 @@
 
 </div>
 
+
+</div>
+
 <script>
 Vue.component('todo-item', {
   template: '\
     <li>\
       <div class="col-sm-2">{{ click }}</div>\
       <div class="col-sm-2">{{ rank }}</div>\
-      <div class="col-sm-2"><b v-on:click="click += 1">{{ title }}</b></div>\
+      <div class="col-sm-2"><b @click="click++">{{ title }}</b></div>\
       <div class="col-sm-2">{{ type }}</div>\
       <div class="col-sm-2">{{ date }}</div>\
       <div class="col-sm-1">\<i class="far fa-edit"></i></div>\
@@ -81,6 +104,7 @@ newTodoText: '',
     click: 0,
     rank: 0,
     date: '1/2/34',
+    es: 0,
     
     todos: [
       {
@@ -90,22 +114,25 @@ newTodoText: '',
         title: 'Do the dishes',
         type: 'sport',
         date: '1/1/11',
+        es: 0,
       },
       {
         id: 2,
         click: 10,
         rank: 2,
-		title: 'Take out the trash',
+        title: 'Take out the trash',
         type: 'sport',
 		date: '2/2/12',
+        es: 0,
 		},
       {
         id: 3,
         click: 3,
         rank: 3,
-		title: 'Mow the lawn',
+        title: 'Mow the lawn',
         type: 'cd',
 		date: '3/2/13',
+		es: 0,
 		}
     ],
     nextTodoId: 4,
@@ -116,8 +143,9 @@ newTodoText: '',
     addNewTodo: function () {
       this.todos.push({
         id: this.nextTodoId++,
-        click: this.click++,
+        click: this.click,
         rank: this.rank++,
+        es: this.es > 5? 5: this.es,
         title: this.newTodoText,
         type: this.newTodoType,
         date: '11/11/11',
@@ -126,8 +154,8 @@ newTodoText: '',
     },
     
     
-    addClick(){
-      return this.click++;
+    addClick: function(){
+      return 5;
     },
     blurField(){
       this.editField = 'ss';
