@@ -11,5 +11,4 @@ back : django
 
 
 Demo : 
-https://www.w3schools.com/code/tryit.asp?filename=G1U5VS0RNXQ4
-
+https://www.w3schools.com/code/tryit.asp?filename=G1XN93WFYPVA
